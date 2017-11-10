@@ -1,0 +1,71 @@
+.big-button {
+  height: 28px;
+}
+
+.big-text {
+  font-size: 24px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.gallery {
+  display:        flex;
+  flex-direction: row;
+  flex-wrap:      wrap;
+  border:         2px solid black;
+  border-radius:  4px;
+  min-height:     600px;
+  width:          800px;
+}
+
+.header {
+  font-size:   24px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+.session-name {
+  color: #00a9ff;
+}
+
+.spacer-row {
+  height: 10px;
+}
+
+.spacer-column {
+  width: 10px;
+}
+
+.upload-container {
+  display:        flex;
+  align-items:    center;
+  flex-direction: column;
+  max-width:      250px;
+  padding:        8px;
+  height:         250px;
+  width:          250px;
+}
+
+.upload-form-fields {
+  border:        2px solid black;
+  border-radius: 4px;
+  padding:       5px;
+  width:         300px;
+}
+
+.upload-image {
+  max-height: 230px;
+  max-width:  230px;
+}
+
+.upload-label {
+  max-width:     inherit;
+  overflow-x:    hidden;
+  text-overflow: ellipsis;
+  white-space:   nowrap;
+}
