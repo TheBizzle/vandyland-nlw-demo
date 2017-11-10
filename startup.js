@@ -1,11 +1,4 @@
-if (window.location.hash.length > 1) {
-  window.startSession(window.location.hash.substring(1));
-}
-
-let uploadForm = document.getElementById("upload-form");
-
-uploadForm.addEventListener('keyup',  onEnter(upload));
-uploadForm.addEventListener('submit', upload);
+window.startSession("segregation-test");
 
 let modal = document.getElementById("item-details");
 
@@ -20,7 +13,7 @@ let addCommentTo = function(commentsElem) { return function(comment) {
       let template = document.getElementById("comment-template");
       template.content.querySelector(".comment-text"  ).textContent = comment;
       template.content.querySelector(".comment-author").textContent = author;
-      template.content.querySelector(".comment-time"  ).textContent = (Date.now() - new Date(time)) + " milliseconds ago";
+      template.content.querySelector(".comment-time"  ).textContent = Math.round((Date.now() - new Date(time)) / 1000) + " seconds ago";
       return document.importNode(template.content, true);
     };
 
@@ -28,25 +21,14 @@ let addCommentTo = function(commentsElem) { return function(comment) {
 
 }};
 
-saveWork = function(data, uploadName) { return function() {
-
-  let url = window.URL.createObjectURL(new Blob([data], { type: "octet/stream" }));
-
-  let a      = document.createElement("a");
-  a.href     = url;
-  a.download = uploadName + ".txt";
-  a.click();
-
-  window.URL.revokeObjectURL(url);
-
-}};
-
 window.showModal = function(sessionName, uploadName, metadata, data, comments, imgSrc, commentURL) {
 
-  document.getElementById("item-header"         ).innerText = metadata === null ? uploadName : uploadName + " by " + metadata;
+  document.getElementById("item-header"         ).innerText = metadata.uploader === null ? uploadName : uploadName + " by " + metadata.uploader;
   document.getElementById("item-details-image"  ).src       = imgSrc;
-  document.getElementById("item-download-button").onclick   = saveWork(data, uploadName);
-  document.getElementById("item-display-button" ).onclick   = function() { alert("Data: " + data); };
+  document.getElementById("item-download-button").onclick   = function() { parent.postMessage({ code: data, type: "import-code" }, "*"); }
+  document.getElementById("item-display-button" ).onclick   = function() { alert(data); };
+
+  document.getElementById("item-summary").innerText = metadata.summary;
 
   let commentsElem = document.getElementById("item-comments");
   commentsElem.innerHTML = "";

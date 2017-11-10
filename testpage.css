@@ -16,8 +16,8 @@
   flex-wrap:      wrap;
   border:         2px solid black;
   border-radius:  4px;
-  min-height:     600px;
-  width:          800px;
+  min-height:     99%;
+  width:          100%;
 }
 
 .header {

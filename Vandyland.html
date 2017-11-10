@@ -6,26 +6,7 @@
  </head>
 
   <body>
-    <div id="landing-area">
-      <input type="button" onclick="startSession()" value="Initiate a session" class="big-button" />
-      <span class="bold">-OR-</span>
-      <label>join the session with this name: <input type="text" class="big-text" onkeypress="onEnter(e => startSession(e.target.value))(event)" /></label>
-    </div>
-
-    <div id="main-content" class="hidden">
-      <div class="header" style="margin-bottom: 25px;">Session Name: <span id="session-name" class="session-name"></span></div>
-      <form id="upload-form" style="margin-bottom: 25px;">
-        <fieldset class="upload-form-fields">
-          <legend>Submit an item</legend>
-          <label>Image:    <input id="upload-image"      name="image"    type="file" accept="image/*" required /></label><br>
-          <div class="spacer-row"></div>
-          <label>Data:     <input id="upload-extra-data" name="data"     type="text"                  required /></label><br>
-          <div class="spacer-row"></div>
-          <label>Metadata: <input id="upload-metadata"   name="metadata" type="text"                           /></label><br>
-          <div class="spacer-row"></div>
-          <input type="submit" value="Upload" />
-        </fieldset>
-      </form>
+    <div id="main-content">
       <div id="gallery" class="gallery"></div>
     </div>
 
@@ -39,9 +20,12 @@
           <div class="item-details-content">
             <img id="item-details-image" class="item-details-image">
             <div class="item-details-controls">
-              <input id="item-download-button" class="item-details-button" type="button" value="Download">
+              <input id="item-download-button" class="item-details-button" type="button" value="Import Code">
               <div class="spacer-column"></div>
               <input id="item-display-button"  class="item-details-button" type="button" value="Display">
+            </div>
+            <div>
+              <span style="font-weight: bold; font-size: 24px;">Summary</span>: <span id="item-summary" style="font-size: 24px;"></span>
             </div>
             <div id="item-comment-area" class="item-comment-area">
               <div id="item-top-level-comment-group">
